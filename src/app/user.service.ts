@@ -10,7 +10,7 @@ export class UserService {
 
   // https://dummyjson.com/users
   getUsers() {
-    return this.http.get('https://jsonplaceholder.typicode.com/users');
+    return this.http.get('https://dummyjson.com/users');
   }
   
 }

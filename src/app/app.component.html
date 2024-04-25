@@ -1,7 +1,7 @@
 Users:
 
-<ul>
-  <li *ngFor="let user of users">{{ user.name }}</li>
+<ul *ngIf="data">
+  <li *ngFor="let user of data.users">{{ user.firstName }} {{ user.lastName }}</li>
 </ul> 
 
 <button (click)="downloadJson()">Get JSON</button>

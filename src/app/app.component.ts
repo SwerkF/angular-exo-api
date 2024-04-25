@@ -9,17 +9,25 @@ import { UserService } from './user.service';
 export class AppComponent {
   title = 'exam-angular';
 
-  users: any;
+  data: any;
 
   constructor(private user_service: UserService) {
     this.user_service.getUsers().subscribe((data) => {
-      this.users = data;
+      this.data = data;
     });
   }
 
   downloadJson() { 
+
+    let data = [];
+    this.data.users.forEach(user => {
+      data.push({
+        firstname: user.firstName,
+        lastname: user.lastName,
+      });
+    });
     const fileName = "data.json";
-    const json = JSON.stringify(this.users);
+    const json = JSON.stringify(data);
     const blob = new Blob([json], { type: 'application/json' });
     const href = URL.createObjectURL(blob);
     const link = document.createElement('a');
